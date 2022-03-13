@@ -1,0 +1,22 @@
+name: CI
+
+on:
+  push:
+    branches: [ "**" ]
+    tags: [ v* ]
+  pull_request:
+    branches: [ "**" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-20.04
+    env:
+      JAVA_OPTS: -Xmx2G
+    steps:
+      - uses: actions/checkout@v3
+      - uses: coursier/cache-action@v6.3
+      - uses: coursier/setup-action@v1.1.2
+        with:
+          jvm: adopt:11
+      - name: Run tests with sbt
+        run: sbt test
