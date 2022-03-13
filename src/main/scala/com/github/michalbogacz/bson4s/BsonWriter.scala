@@ -4,8 +4,7 @@ import com.github.michalbogacz.bson4s.encoder.BsonValueEncoder
 import magnolia1.CaseClass
 import magnolia1.Magnolia
 import magnolia1.SealedTrait
-import org.mongodb.scala.bson.BsonDocument
-import org.mongodb.scala.bson.BsonValue
+import org.bson.{BsonDocument, BsonString, BsonValue}
 
 import scala.jdk.CollectionConverters._
 import scala.language.experimental.macros
@@ -33,7 +32,8 @@ object BsonWriter {
       ctx.split(value) { sub =>
         val encoded = sub.typeclass.encode(sub.cast(value))
 
-        val traitDocument = BsonDocument("className" -> sub.typeName.full)
+        val traitDocument =
+          new BsonDocument("className", new BsonString(sub.typeName.full))
         encoded match {
           case value: BsonDocument =>
             val builder = Map.newBuilder[String, BsonValue]
