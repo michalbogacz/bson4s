@@ -1,7 +1,7 @@
 package com.github.michalbogacz.bson4s
 
 import com.github.michalbogacz.bson4s.encoder.BsonValueEncoder
-import org.mongodb.scala.bson.BsonValue
+import org.bson.BsonValue
 
 object Syntax {
 

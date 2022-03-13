@@ -1,7 +1,14 @@
 package com.github.michalbogacz.bson4s.encoder.instances
 
 import com.github.michalbogacz.bson4s.encoder.BsonValueEncoder
-import org.bson.{BsonBoolean, BsonDouble, BsonInt32, BsonInt64, BsonObjectId, BsonString}
+import org.bson.{
+  BsonBoolean,
+  BsonDouble,
+  BsonInt32,
+  BsonInt64,
+  BsonObjectId,
+  BsonString
+}
 import org.bson.types.ObjectId
 
 trait Primitives {
